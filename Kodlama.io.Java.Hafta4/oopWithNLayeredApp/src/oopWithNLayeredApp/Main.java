@@ -1,9 +1,6 @@
 package oopWithNLayeredApp;
 
 import java.util.List;
-
-import javax.xml.crypto.Data;
-
 import oopWithNLayeredApp.business.ProductManager;
 import oopWithNLayeredApp.core.logging.DatabaseLogger;
 import oopWithNLayeredApp.core.logging.FileLogger;
@@ -17,8 +14,10 @@ public class Main {
         Product product1 = new Product(1, "IPhone Xr", 90);
 
         Logger[] loggers = {new DatabaseLogger(),new FileLogger(),new MailLogger()};
+        List<Logger> loggers2 = List.of(new DatabaseLogger(),new FileLogger(),new MailLogger());
         
-        ProductManager productManager = new ProductManager(new HibernateProductDao(),loggers);
+        ProductManager productManager = new ProductManager(new HibernateProductDao(),loggers,loggers2);
         productManager.add(product1);
+        
     }
 }
